@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        VISTARA — Immersive Image Gallery &amp; Visual Discovery Platform
+    </title>
+
+    <!-- Meta & SEO Tags -->
+    <meta name="description"
+        content="VISTARA is a clinical-precision digital atelier and immersive image discovery platform featuring responsive CSS Grid layouts, interactive 3D wave matrices, 3D cylindrical horizon panoramas, infinite hyperspace tunnels, verified camera EXIF analytics, and Gemini AI vision critiques." />
+    <meta name="keywords"
+        content="Vistara, Image Gallery, Photography Atelier, 3D Gallery, Creative Portfolio, Lightbox, EXIF Data, Gemini AI Vision, Responsive CSS Grid" />
+    <meta name="author" content="VISTARA Curatorial Atelier" />
+    <meta name="theme-color" content="#0B0E17" />
+
+    <!-- Open Graph Metadata -->
+    <meta property="og:title" content="VISTARA — Immersive Image Gallery &amp; Visual Discovery Platform" />
+    <meta property="og:description"
+        content="A curated digital photography platform with interactive 3D undulation waves, infinite tunnel fly-throughs, and verified camera EXIF metadata." />
+    <meta property="og:type" content="website" />
+
+    <!-- Google Fonts: Space Grotesk, Syne, Plus Jakarta Sans, JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=Syne:wght@600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- Interactive Background Particle Canvas -->
+    <canvas id="ambientDustCanvas"></canvas>
+    <!-- Reticle Follower -->
+    <div id="reticleCursor"></div>
+
+    <div class="site-wrapper">
+        <!-- Header -->
+        <header class="site-header">
+            <div class="site-container header-inner">
+                <a href="#hero" class="brand-logo" aria-label="VISTARA Home">
+                    <span class="brand-prism-symbol">V</span>
+                    <span>VISTARA</span>
+                </a>
+
+                <nav class="nav-desktop-links" aria-label="Main Navigation">
+                    <a href="#gallery" class="nav-link active">Gallery</a>
+                    <a href="#showcaseArc" class="nav-link">Our Works (3D Arc)</a>
+                    <a href="#wavePortal" class="nav-link">Wave Matrix</a>
+                    <a href="#hyperspaceTunnel" class="nav-link">Infinite Tunnel</a>
+                    <a href="#collections" class="nav-link">Collections</a>
+                    <a href="#faq" class="nav-link">FAQ</a>
+                </nav>
+
+                <div class="header-actions">
+                    <button type="button" id="btnThemeToggle" class="btn-icon-round" aria-label="Toggle Theme">
+                        <span id="themeIcon">🌓</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Hero Section -->
+            <section id="hero" class="hero-section">
+                <div class="site-container hero-layout-grid">
+                    <div class="hero-content-col">
+                        <div class="hero-badge-pill">
+                            <span style="
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    background: var(--accent-primary);
+                    box-shadow: 0 0 8px var(--accent-primary);
+                  "></span>
+                            <span>A World of Visual Stories</span>
+                        </div>
+
+                        <!-- Word-Grouped Flip Headline -->
+                        <h1 class="hero-title-main" id="heroFlipTitle">
+                            <span class="hero-word">Every</span>
+                            <span class="hero-word">Image</span>
+                            <span class="hero-word">Tells</span>
+                            <span class="hero-word">a</span>
+                            <span class="hero-word">Story.</span>
+                        </h1>
+
+                        <p class="hero-description-text">
+                            VISTARA is a curated digital atelier where architectural
+                            monumentality, atmospheric portraits, and wild terrains coalesce
+                            with verified photographic provenance.
+                        </p>
+
+                        <div style="display: flex; gap: 1.2rem; flex-wrap: wrap">
+                            <a href="#gallery" class="btn-cta-primary">
+                                <span>Explore Gallery</span>
+                                <span>➔</span>
+                            </a>
+                            <a href="#showcaseArc" class="btn-pill-action">
+                                <span>Curated Arc 3D</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="hero-media-col">
+                        <div class="hero-media-card">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+                                alt="Minimalist Architectural Composition" class="hero-card-img" />
+                            <div class="hero-card-overlay">
+                                <h2 style="
+                      font-family: var(--font-display);
+                      font-size: 1.45rem;
+                      font-weight: 800;
+                    ">
+                                    Nordic Modernist Study
+                                </h2>
+                                <span style="
+                      font-family: var(--font-mono);
+                      font-size: 0.8rem;
+                      color: var(--accent-primary);
+                      text-transform: uppercase;
+                    ">Architectural Forms • Hasselblad X2D 100C</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="site-container">
+                <!-- Telemetry Statistics -->
+                <div class="telemetry-strip">
+                    <div class="telemetry-col">
+                        <span class="telemetry-num" id="statTotalWorks">16</span>
+                        <span class="telemetry-desc">Catalogued Works</span>
+                    </div>
+                    <div class="telemetry-col">
+                        <span class="telemetry-num">6</span>
+                        <span class="telemetry-desc">Curated Collections</span>
+                    </div>
+                    <div class="telemetry-col">
+                        <span class="telemetry-num" id="statSavedFavs">0</span>
+                        <span class="telemetry-desc">Saved Favorites</span>
+                    </div>
+                    <div class="telemetry-col">
+                        <span class="telemetry-num">100%</span>
+                        <span class="telemetry-desc">Verified Optical EXIF</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Toolbar -->
+                <section class="gallery-toolbar-box" aria-label="Gallery Controls">
+                    <div class="toolbar-top-row">
+                        <div class="search-input-shell">
+                            <span style="
+                    position: absolute;
+                    left: 1.2rem;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    color: var(--text-faint);
+                  ">🔍</span>
+                            <input type="text" id="gallerySearchInput" class="search-field-input"
+                                placeholder="Search by title, photographer, or keyword..." />
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 1rem">
+                            <div class="density-toggle-group">
+                                <button type="button" class="btn-density active" data-density="standard">
+                                    3 Col
+                                </button>
+                                <button type="button" class="btn-density" data-density="compact">
+                                    4 Col
+                                </button>
+                                <button type="button" class="btn-density" data-density="large">
+                                    2 Col
+                                </button>
+                            </div>
+
+                            <select id="gallerySortSelect" class="btn-pill-action" aria-label="Sort Collection"
+                                style="cursor: pointer">
+                                <option value="featured">Featured Sequence</option>
+                                <option value="title-asc">Title: A to Z</option>
+                                <option value="title-desc">Title: Z to A</option>
+                                <option value="favorites-first">Favorites First</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Category Tabs -->
+                    <div class="category-tab-strip" id="categoryTabStrip">
+                        <button type="button" class="btn-category-tab active" data-category="all">
+                            All Works
+                        </button>
+                        <button type="button" class="btn-category-tab" data-category="Architecture">
+                            Architecture
+                        </button>
+                        <button type="button" class="btn-category-tab" data-category="Portraits">
+                            Portraits
+                        </button>
+                        <button type="button" class="btn-category-tab" data-category="Nature">
+                            Nature
+                        </button>
+                        <button type="button" class="btn-category-tab" data-category="Minimalism">
+                            Minimalism
+                        </button>
+                        <button type="button" class="btn-category-tab" data-category="Street">
+                            Street &amp; Urban
+                        </button>
+                        <button type="button" class="btn-category-tab" data-category="Cyberpunk">
+                            Cyberpunk
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Main Gallery Grid -->
+                <section id="gallery" aria-label="Main Photo Gallery">
+                    <div class="gallery-grid-matrix" id="galleryGridMatrix">
+                        <!-- Populated dynamically by JS -->
+                    </div>
+                </section>
+            </div>
+
+            <!-- ========================================================
+                 NEW SECTION: 3D CYLINDRICAL HORIZON & RADIAL ARC SHOWCASE
+                 (Matched to Screenshots: "Our Works" & "Best People")
+                 ======================================================== -->
+            <section id="showcaseArc" class="showcase-arc-section">
+                <div class="site-container">
+                    <div class="section-header-centered">
+                        <span class="section-tag-pill">3D Perspective Horizon</span>
+                        <h2 class="section-heading-bold" id="arcSectionTitle">
+                            Our Works
+                        </h2>
+                        <p style="color: var(--text-muted); font-size: 0.96rem">
+                            Curated masterworks suspended across an interactive 3D
+                            perspective arc. Hover over any work to elevate it
+                            front-and-center.
+                        </p>
+
+                        <div class="showcase-mode-switcher">
+                            <button type="button" class="btn-pill-action active" id="btnModePanorama">
+                                <span>🪐 Panoramic Horizon</span>
+                            </button>
+                            <button type="button" class="btn-pill-action" id="btnModeFan">
+                                <span>🎴 Radial Arc Fan</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="arc-stage-viewport" id="arcStageViewport">
+                        <div class="arc-cards-track" id="arcCardsTrack">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================
+                 BORDERLESS 3D FLUID WAVE MATRIX SECTION
+                 (Harsh Box Border Completely Removed!)
+                 ======================================================== -->
+            <section id="wavePortal" class="wave-portal-section">
+                <div class="site-container">
+                    <div class="section-header-centered">
+                        <span class="section-tag-pill">Continuous Undulation</span>
+                        <h2 class="section-heading-bold">3D Fluid Wave Matrix</h2>
+                        <p style="color: var(--text-muted); font-size: 0.96rem">
+                            Photographic tiles undulating in real-time isometric sine-wave
+                            harmonics. Borderless clean floating canvas.
+                        </p>
+                    </div>
+
+                    <!-- Clean borderless frame! -->
+                    <div class="wave-viewport-frame" id="waveViewportFrame">
+                        <div class="wave-plane-matrix" id="wavePlaneMatrix">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+
+                        <div class="wave-controls-dock">
+                            <button type="button" id="btnWaveSwell" class="btn-pill-action">
+                                <span>🌊 Wave Swell: Ocean</span>
+                            </button>
+                            <button type="button" id="btnWavePause" class="btn-pill-action">
+                                <span>⏸ Pause Flow</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================
+                 3D INFINITE HYPERSPACE TUNNEL SECTION
+                 (Updated with Smooth Exponential Damping / Lerp)
+                 ======================================================== -->
+            <section id="hyperspaceTunnel" class="tunnel-outer-track">
+                <div class="tunnel-sticky-viewport" id="tunnelViewport">
+                    <div class="tunnel-ambient-glow" id="tunnelAmbientGlow"></div>
+                    <div class="tunnel-grid-floor"></div>
+
+                    <div class="tunnel-stage-world" id="tunnelStageWorld">
+                        <!-- Populated dynamically by JS -->
+                    </div>
+
+                    <div class="tunnel-hud-overlay">
+                        <div class="tunnel-prompt-pill">
+                            <span>Scroll ↓ to Travel Forward</span>
+                        </div>
+                        <button type="button" id="btnAutoCruise" class="btn-pill-action">
+                            <span>🚀 Auto Cruise: Off</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================
+                 NEW SECTION: IMAGE TRAIL ON MOUSE MOVE
+                 ======================================================== -->
+            <section id="imageTrailSection" class="image-trail-section">
+                <div class="site-container">
+                    <div class="section-header-centered" style="pointer-events: none; position: relative; z-index: 10">
+                        <span class="section-tag-pill">Interactive Kinetic</span>
+                        <h2 class="section-heading-bold">Mouse Trail Canvas</h2>
+                        <p style="color: var(--text-muted); font-size: 0.96rem">
+                            Move your cursor rapidly across this portal to reveal a kinetic
+                            trail of visual works.
+                        </p>
+                    </div>
+                </div>
+                <div id="trailCanvas" class="trail-canvas"></div>
+            </section>
+
+            <div class="site-container" style="padding-top: 5rem">
+                <!-- Featured Collections -->
+                <section id="collections" class="featured-collections-section">
+                    <div class="section-header-centered">
+                        <span class="section-tag-pill">Curatorial Focus</span>
+                        <h2 class="section-heading-bold">Curated Collections</h2>
+                        <p style="color: var(--text-muted); font-size: 0.96rem">
+                            Thematic groupings exploring spatial monumentality, atmospheric
+                            portraits, and quiet minimalism.
+                        </p>
+                    </div>
+
+                    <div class="collections-grid">
+                        <div class="collection-card" data-category="Architecture">
+                            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"
+                                alt="Architectural Forms" class="collection-cover-img" />
+                            <div class="collection-card-overlay">
+                                <h3 class="collection-card-title">Architectural Forms</h3>
+                                <span style="
+                      font-family: var(--font-mono);
+                      font-size: 0.78rem;
+                      color: var(--accent-primary);
+                    ">4 Works • Explore ➔</span>
+                            </div>
+                        </div>
+
+                        <div class="collection-card" data-category="Portraits">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80"
+                                alt="Atmospheric Portraits" class="collection-cover-img" />
+                            <div class="collection-card-overlay">
+                                <h3 class="collection-card-title">Atmospheric Portraits</h3>
+                                <span style="
+                      font-family: var(--font-mono);
+                      font-size: 0.78rem;
+                      color: var(--accent-primary);
+                    ">3 Works • Explore ➔</span>
+                            </div>
+                        </div>
+
+                        <div class="collection-card" data-category="Nature">
+                            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80"
+                                alt="Wild Terrains" class="collection-cover-img" />
+                            <div class="collection-card-overlay">
+                                <h3 class="collection-card-title">Wild Terrains</h3>
+                                <span style="
+                      font-family: var(--font-mono);
+                      font-size: 0.78rem;
+                      color: var(--accent-primary);
+                    ">3 Works • Explore ➔</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ==========================================
+             PARALLAX FLOATING KINETIC SECTION
+             ========================================== -->
+                <section id="parallaxFloatSection" class="parallax-float-section">
+                    <div id="parallaxStage" class="parallax-stage">
+                        <!-- 1. Top-Left Accent -->
+                        <div class="floating-element" data-depth="0.5" style="top: 8%; left: 11%">
+                            <div class="floating-card-media" style="width: 6rem; height: 6rem">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80"
+                                    alt="Editorial Portrait" style="width: 100%; height: 100%; object-fit: cover" />
+                            </div>
+                        </div>
+
+                        <!-- 2. Top Center-Left -->
+                        <div class="floating-element" data-depth="1.0" style="top: 10%; left: 32%">
+                            <div class="floating-card-media" style="width: 7rem; height: 7rem">
+                                <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=500&q=80"
+                                    alt="Minimal Architecture" style="width: 100%; height: 100%; object-fit: cover" />
+                            </div>
+                        </div>
+
+                        <!-- 3. Top Center (Tall) -->
+                        <div class="floating-element" data-depth="2.0" style="top: 2%; left: 53%">
+                            <div class="floating-card-media" style="width: 10rem; height: 13rem">
+                                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80"
+                                    alt="Cyberpunk Neon Concept" style="width: 100%; height: 100%; object-fit: cover" />
+                            </div>
+                        </div>
+
+                        <!-- 4. Top Right Corner -->
+                        <div class="floating-element" data-depth="1.0" style="top: 3%; left: 82%">
+                            <div class="floating-card-media" style="width: 8rem; height: 8rem">
+                                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=500&q=80"
+                                    alt="Modern Highrise Structure"
+                                    style="width: 100%; height: 100%; object-fit: cover" />
+                            </div>
+                        </div>
+
+                        <!-- 5. Mid Left Edge -->
+                        <div class="floating-element" data-depth="1.2" style="top: 40%; left: 2%">
+                            <div class="floating-card-media" style="width: 9rem; height: 9rem">
+                                <img src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=500&q=80"
+                                    alt="Ceramic Minimalist Art" style="width: 100%; height: 100%; object-fit: cover" />
+                            </div>
+                        </div>
+
+                        <!-- 6. Bottom Right -->
+                        <div class="floating-element" data-depth="2.2" style="top: 68%; left: 77%">
+                            <div class="floating-card-media" style="width: 9rem; height: 12rem">
+                                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80"
+                                    alt="Fashion Monograph" style="width: 100%; height: 100%; object-fit: cover" />
+                            </div>
+                        </div>
+
+                        <!-- 7. Bottom Left (Hero Dominant) -->
+                        <div class="floating-element" data-depth="4.0" style="top: 65%; left: 14%">
+                            <div class="floating-card-media" style="width: 14rem; height: 18rem">
+                                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80"
+                                    alt="Atelier Spatial Architecture"
+                                    style="width: 100%; height: 100%; object-fit: cover" />
+                            </div>
+                        </div>
+
+                        <!-- 8. Bottom Center -->
+                        <div class="floating-element" data-depth="1.0" style="top: 80%; left: 48%">
+                            <div class="floating-card-media" style="width: 8rem; height: 8rem">
+                                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=500&q=80"
+                                    alt="Alpine Mist Horizon" style="width: 100%; height: 100%; object-fit: cover" />
+                            </div>
+                        </div>
+
+                        <!-- Center Interactive Title -->
+                        <div class="parallax-center-hero">
+                            <h2 class="section-heading-bold" style="
+                    font-size: clamp(4rem, 8vw, 8rem);
+                    margin-bottom: 1.5rem;
+                    font-style: italic;
+                  ">
+                                fancy
+                            </h2>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FAQ Accordion -->
+                <section id="faq" class="faq-section">
+                    <div class="section-header-centered">
+                        <span class="section-tag-pill">Inquiries</span>
+                        <h2 class="section-heading-bold">Frequently Asked Questions</h2>
+                    </div>
+
+                    <div class="faq-accordion-box">
+                        <div class="faq-item-tile">
+                            <div class="faq-question-row">
+                                <span>How do I preview full-resolution images and EXIF
+                                    metrics?</span>
+                                <span>+</span>
+                            </div>
+                            <div class="faq-answer-pane">
+                                Click or tap any photograph in the gallery grid, 3D
+                                cylindrical horizon, wave matrix, or infinite tunnel to open
+                                the Lightbox Theater. Full verified optical EXIF parameters
+                                are displayed alongside the image.
+                            </div>
+                        </div>
+
+                        <div class="faq-item-tile">
+                            <div class="faq-question-row">
+                                <span>Are my saved favorites synchronized across devices?</span>
+                                <span>+</span>
+                            </div>
+                            <div class="faq-answer-pane">
+                                Favorites are stored locally inside your browser's private Web
+                                Storage (`localStorage`). They persist through page reloads
+                                without requiring an account.
+                            </div>
+                        </div>
+
+                        <div class="faq-item-tile">
+                            <div class="faq-question-row">
+                                <span>How do the 3D Panoramic Arc and Infinite Tunnel work?</span>
+                                <span>+</span>
+                            </div>
+                            <div class="faq-answer-pane">
+                                Both components are built with 100% Vanilla JavaScript and CSS
+                                3D Transforms (`perspective`, `rotateY`, `rotateZ`,
+                                `translateZ`). The infinite tunnel uses smooth exponential
+                                Lerp damping on scroll, and the panoramic arc applies
+                                spherical cylindrical projection.
+                            </div>
+                        </div>
+
+                        <div class="faq-item-tile">
+                            <div class="faq-question-row">
+                                <span>Can I use the images for commercial projects?</span>
+                                <span>+</span>
+                            </div>
+                            <div class="faq-answer-pane">
+                                All images in the VISTARA gallery are provided under an open license. They are free to use for both personal and commercial projects, provided they are not directly resold or claimed as your own photography.
+                            </div>
+                        </div>
+
+                        <div class="faq-item-tile">
+                            <div class="faq-question-row">
+                                <span>What technology powers the Multilayer 3D Floating Engine?</span>
+                                <span>+</span>
+                            </div>
+                            <div class="faq-answer-pane">
+                                The floating kinetic depth engine uses pure Vanilla JavaScript physics calculations. It hooks into a high-performance requestAnimationFrame loop, dynamically calculating mouse vectors and applying CSS 3D transforms (`translate3d`, `rotateX`, `rotateY`) for buttery smooth multi-axis parallax.
+                            </div>
+                        </div>
+
+                        <div class="faq-item-tile">
+                            <div class="faq-question-row">
+                                <span>Does the gallery support Light/Dark themes?</span>
+                                <span>+</span>
+                            </div>
+                            <div class="faq-answer-pane">
+                                Yes. VISTARA features a bespoke dual-theme architecture. Our premium "Obsidian & Gold" dark theme is designed for optimal cinematic image viewing, while the "Ivory & Obsidian" light theme provides a crisp, high-fashion editorial aesthetic.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="site-container">
+                <div class="footer-grid-top">
+                    <div>
+                        <div class="footer-brand-title">VISTARA</div>
+                        <p class="footer-brand-desc">
+                            A curated visual discovery atelier and digital exhibition
+                            experience celebrating optical precision, architectural
+                            monumentality, and atmospheric stories.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h4 class="footer-col-heading">Navigation</h4>
+                        <ul class="footer-link-list">
+                            <li>
+                                <a href="#hero" class="footer-nav-link">Top of Atelier</a>
+                            </li>
+                            <li>
+                                <a href="#gallery" class="footer-nav-link">Curated Works</a>
+                            </li>
+                            <li>
+                                <a href="#showcaseArc" class="footer-nav-link">3D Arc Showcase</a>
+                            </li>
+                            <li>
+                                <a href="#wavePortal" class="footer-nav-link">Wave Matrix</a>
+                            </li>
+                            <li>
+                                <a href="#hyperspaceTunnel" class="footer-nav-link">Infinite Tunnel</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="footer-col-heading">Legal &amp; Ethics</h4>
+                        <ul class="footer-link-list">
+                            <li>
+                                <a href="#faq" class="footer-nav-link">Image Licensing</a>
+                            </li>
+                            <li>
+                                <a href="#faq" class="footer-nav-link">Privacy Guarantee</a>
+                            </li>
+                            <li>
+                                <a href="#faq" class="footer-nav-link">WCAG 2.2 AA Audit</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="footer-col-heading">Atelier Telemetry</h4>
+                        <p style="
+                  font-size: 0.86rem;
+                  color: var(--text-muted);
+                  line-height: 1.6;
+                ">
+                            Engine: Pure Vanilla ES6+<br />
+                            Smooth Physics: Lerp Damped<br />
+                            Status: Zero Console Warnings
+                        </p>
+                    </div>
+                </div>
+
+                <div class="footer-bottom-bar">
+                    <span>&copy; VISTARA Curatorial Atelier. All rights reserved.</span>
+                    <button type="button" id="btnScrollTop" class="btn-pill-action">
+                        <span>↑ Back to Top</span>
+                    </button>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Lightbox Theater Dialog -->
+    <div id="lightboxModal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Image Preview Dialog">
+        <div class="lightbox-dialog-shell">
+            <button type="button" class="lightbox-close-btn" id="btnCloseLightbox" aria-label="Close Preview">
+                &times;
+            </button>
+
+            <div class="lightbox-img-pane">
+                <img src="" alt="" class="lightbox-hero-img" id="lightboxImg" />
+            </div>
+
+            <div class="lightbox-details-col">
+                <div>
+                    <h2 class="lightbox-title-text" id="lightboxTitle">Image Title</h2>
+                    <p style="color: var(--text-muted); font-size: 0.92rem" id="lightboxAuthor">
+                        Photographer
+                    </p>
+
+                    <div class="lightbox-exif-grid">
+                        <div>
+                            <strong>Camera:</strong> <span id="exifCamera">Leica M11</span>
+                        </div>
+                        <div>
+                            <strong>Lens:</strong>
+                            <span id="exifLens">35mm f/1.4 Summilux</span>
+                        </div>
+                        <div>
+                            <strong>Aperture:</strong> <span id="exifAperture">f/2.0</span>
+                        </div>
+                        <div>
+                            <strong>Shutter:</strong> <span id="exifShutter">1/500s</span>
+                        </div>
+                        <div><strong>ISO:</strong> <span id="exifIso">100</span></div>
+                        <div>
+                            <strong>Category:</strong>
+                            <span id="exifCategory">Architecture</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="
+              display: flex;
+              gap: 0.8rem;
+              flex-wrap: wrap;
+              margin-top: 1.5rem;
+            ">
+                    <button type="button" id="btnLightboxFav" class="btn-pill-action"
+                        style="flex: 1; justify-content: center">
+                        <span>❤️ Save Favorite</span>
+                    </button>
+                    <button type="button" id="btnCopyLink" class="btn-pill-action"
+                        style="flex: 1; justify-content: center">
+                        <span>📋 Copy Link</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toastPill" class="toast-pill">Notification</div>
+
+    <!-- Lenis for smooth scrolling -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

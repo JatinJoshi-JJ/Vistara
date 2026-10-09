@@ -688,3 +688,4 @@ VISTARA represents the idea that an image gallery should be more than a collecti
 
 **Built with ❤️ using HTML5, CSS3, Vanilla JavaScript, and Lenis.**
 # Vistara
+# Vistara
